@@ -39,7 +39,6 @@
     "prettier"
   ],
   "dependencies": {
-    "@prisma/client": "4.9.0",
     "bcryptjs": "^2.4.3",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
@@ -64,6 +63,7 @@
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {
+    "@prisma/client": "^5.3.1",
     "coveralls": "^3.0.7",
     "eslint": "^7.0.0",
     "eslint-config-airbnb-base": "^14.0.0",
@@ -79,7 +79,7 @@
     "node-mocks-http": "^1.8.0",
     "nodemon": "^2.0.0",
     "prettier": "^2.0.5",
-    "prisma": "^4.9.0",
+    "prisma": "^5.3.1",
     "supertest": "^6.0.1"
   }
 }
