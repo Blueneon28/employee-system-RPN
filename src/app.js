@@ -31,7 +31,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // sanitize request data
 app.use(xss());
-  
+
 // gzip compression
 app.use(compression());
 

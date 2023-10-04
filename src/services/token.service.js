@@ -5,7 +5,7 @@ const config = require('../config/config');
 const userService = require('./user.service');
 const ApiError = require('../utils/ApiError');
 const { tokenTypes } = require('../config/tokens');
-const prisma = require('../../prisma/client')
+const prisma = require('../../prisma/client');
 
 /**
  * Generate token
@@ -38,11 +38,11 @@ const saveToken = async (token, userId, expires, type, blacklisted = false) => {
   const tokenDoc = await prisma.token.create({
     data: {
       token,
-      userId: userId,
+      userId,
       expires: expires.toDate(),
       type,
       blacklisted,
-    }
+    },
   });
   return tokenDoc;
 };
@@ -56,7 +56,7 @@ const saveToken = async (token, userId, expires, type, blacklisted = false) => {
 const verifyToken = async (token, type) => {
   const payload = jwt.verify(token, config.jwt.secret);
   const tokenDoc = await prisma.token.findFirst({
-    where: { token, type, userId: payload.sub, blacklisted: false }
+    where: { token, type, userId: payload.sub, blacklisted: false },
   });
 
   if (!tokenDoc) {

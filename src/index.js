@@ -5,11 +5,11 @@ const prisma = require('../prisma/client');
 
 let server;
 
-if(prisma){
+if (prisma) {
   logger.info('Connected to Database');
   server = app.listen(config.port, () => {
     logger.info(`Listening to port ${config.port}`);
-    console.log(`Docs📚: http://localhost:${config.port}/v1/docs`)
+    console.log(`Docs📚: http://localhost:${config.port}/v1/docs`);
   });
 }
 
