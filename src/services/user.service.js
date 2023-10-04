@@ -1,7 +1,7 @@
 const httpStatus = require('http-status');
-const prisma = require('../../prisma/client')
-const ApiError = require('../utils/ApiError');
 const bcrypt = require('bcryptjs');
+const prisma = require('../../prisma/client');
+const ApiError = require('../utils/ApiError');
 
 /**
  * Create a user
@@ -12,7 +12,7 @@ const createUser = async (userBody) => {
   userBody.password = bcrypt.hashSync(userBody.password, 8);
 
   return prisma.user.create({
-    data: userBody
+    data: userBody,
   });
 };
 
@@ -33,9 +33,9 @@ const queryUsers = async (filter, options) => {
 const getUserById = async (id) => {
   return prisma.user.findFirst({
     where: {
-      id: id
-    }
-  })
+      id,
+    },
+  });
 };
 
 /**
@@ -45,7 +45,7 @@ const getUserById = async (id) => {
  */
 const getUserByEmail = async (email) => {
   return prisma.user.findUnique({
-    where: { email }
+    where: { email },
   });
 };
 
@@ -63,13 +63,13 @@ const updateUserById = async (userId, updateBody) => {
   if (updateBody.email && (await User.isEmailTaken(updateBody.email, userId))) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
   }
-  
+
   const updateUser = await prisma.user.update({
     where: {
       id: userId,
     },
-    data: updateBody
-  })
+    data: updateBody,
+  });
 
   return updateUser;
 };
@@ -87,9 +87,9 @@ const deleteUserById = async (userId) => {
 
   const deleteUsers = await prisma.user.deleteMany({
     where: {
-      id: userId
+      id: userId,
     },
-  })
+  });
 
   return deleteUsers;
 };
