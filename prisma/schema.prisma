@@ -16,10 +16,12 @@ model User {
   email     String?    @unique
   password  String    
   role      String    @default("user")
+  jobTitle  String    
   createdAt DateTime  @default(now())
   updateAt  DateTime  @default(now())
   isEmailVerified Boolean @default(false)
   tokens    Token[]
+  employeeProject EmployeeProjects[]
 }
 model Token {
   id        String    @id @default(uuid())
@@ -31,4 +33,23 @@ model Token {
   blacklisted Boolean @default(false)
   createdAt DateTime  @default(now())
   updateAt  DateTime  @default(now())
+}
+
+model Projects {
+  id              String              @id @default(uuid())
+  name            String
+  status          String    
+  createdAt       DateTime            @default(now())
+  updateAt        DateTime            @updatedAt
+  employeeProject EmployeeProjects[]
+}
+
+model EmployeeProjects {
+  id         String     @id @default(uuid())
+  userId     String
+  User       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  projectId  String    
+  Project    Projects   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  createdAt  DateTime   @default(now())
+  updateAt   DateTime   @updatedAt
 }
