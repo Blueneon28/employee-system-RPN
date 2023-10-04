@@ -16,7 +16,7 @@ model User {
   email     String?    @unique
   password  String    
   role      String    @default("user")
-  jobTitle  String    
+  jobTitle  String    @default("staff") 
   createdAt DateTime  @default(now())
   updateAt  DateTime  @default(now())
   isEmailVerified Boolean @default(false)
