@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Detail</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        width: 50%;
+        margin: 50px auto;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 5px;
+        text-align: left;
+      }
+
+      h1 {
+        background-color: #66b3e0;
+        color: white;
+        padding: 10px 0;
+      }
+
+      p {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      a {
+        background-color: #66b3e0;
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        display: inline-block;
+        margin-top: 20px;
+        transition: background-color 0.3s;
+      }
+
+      a:hover {
+        background-color: #3385b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Employee Detail</h1>
+      <p><strong>ID:</strong> <%= user.id %></p>
+      <p><strong>Name:</strong> <%= user.name %></p>
+      <p><strong>Email:</strong> <%= user.email %></p>
+      <p><strong>Role:</strong> <%= user.role %></p>
+      <p><strong>Job Title:</strong> <%= user.jobTitle %></p>
+      <p><strong>Created At:</strong> <%= user.createdAt %></p>
+      <p><strong>Updated At:</strong> <%= user.updateAt %></p>
+      <p><strong>Email Verified:</strong> <%= user.isEmailVerified %></p>
+      <a href="/v1/users">Back to Employee Management</a>
+    </div>
+  </body>
+</html>

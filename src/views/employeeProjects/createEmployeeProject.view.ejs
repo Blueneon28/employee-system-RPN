@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Create Employee Project</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        background-color: #66b3e0;
+        color: white;
+        padding: 10px 0;
+      }
+
+      .container {
+        width: 50%;
+        margin: 20px auto;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 5px;
+        text-align: left;
+      }
+
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      input[type='text'] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      button {
+        background-color: #66b3e0;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s;
+        margin-top: 10px;
+      }
+
+      button:hover {
+        background-color: #3385b3;
+      }
+
+      a {
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Create Employee Project</h1>
+    <div class="container">
+      <form action="/v1/employeeProjects" method="POST">
+        <label for="projectId">Project ID:</label>
+        <input type="text" name="projectId" id="projectId" required /><br /><br />
+
+        <label for="userId">User ID:</label>
+        <input type="text" name="userId" id="userId" required /><br /><br />
+
+        <button type="submit">Create Employee Project</button>
+      </form>
+      <button><a href="/v1/employeeProjects">Back to Employee Project List</a></button>
+    </div>
+  </body>
+</html>

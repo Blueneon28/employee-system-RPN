@@ -5,15 +5,22 @@ const compression = require('compression');
 const cors = require('cors');
 const passport = require('passport');
 const httpStatus = require('http-status');
+const cookieParser = require('cookie-parser');
+const methodOverride = require('method-override');
 const config = require('./config/config');
 const morgan = require('./config/morgan');
 const { jwtStrategy } = require('./config/passport');
 const { authLimiter } = require('./middlewares/rateLimiter');
+const auth = require('./middlewares/auth');
 const routes = require('./routes/v1');
 const { errorConverter, errorHandler } = require('./middlewares/error');
 const ApiError = require('./utils/ApiError');
+const path = require('path');
 
 const app = express();
+
+app.set('view engine', 'ejs'); // Mengatur EJS sebagai template engine
+app.set('views', path.join(__dirname + '/views')); // Mengatur direktori views
 
 if (config.env !== 'test') {
   app.use(morgan.successHandler);
@@ -39,7 +46,11 @@ app.use(compression());
 app.use(cors());
 app.options('*', cors());
 
+// Use method-override middleware
+app.use(methodOverride('_method'));
+
 // jwt authentication
+app.use(cookieParser());
 app.use(passport.initialize());
 passport.use('jwt', jwtStrategy);
 
@@ -47,6 +58,10 @@ passport.use('jwt', jwtStrategy);
 if (config.env === 'production') {
   app.use('/v1/auth', authLimiter);
 }
+
+app.get('/', auth(), (req, res) => {
+  res.render('index');
+});
 
 // v1 api routes
 app.use('/v1', routes);

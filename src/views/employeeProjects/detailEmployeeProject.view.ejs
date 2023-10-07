@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Employee Project Detail</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        background-color: #66b3e0;
+        color: white;
+        padding: 10px 0;
+      }
+
+      .employee-project-details {
+        width: 50%;
+        margin: 20px auto;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 5px;
+        text-align: left;
+      }
+
+      .employee-project-details p {
+        margin: 10px 0;
+      }
+
+      button {
+        background-color: #66b3e0;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s;
+        margin-top: 20px;
+      }
+
+      button:hover {
+        background-color: #3385b3;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Employee Project Detail</h1>
+    <div class="employee-project-details">
+      <p><strong>Project ID:</strong> <%= employeeProject.projectId %></p>
+      <p><strong>User ID:</strong> <%= employeeProject.userId %></p>
+      <p><strong>Created At:</strong> <%= employeeProject.createdAt %></p>
+      <p><strong>Updated At:</strong> <%= employeeProject.updateAt %></p>
+    </div>
+    <button><a href="/v1/employeeProjects">Back to Employee Project List</a></button>
+  </body>
+</html>

@@ -7,10 +7,14 @@ const { employeeProjectService } = require('../services');
 const createEmployeeProject = catchAsync(async (req, res) => {
   const employeeProjects = await employeeProjectService.createEmployeeProject(req.body);
 
-  res.status(httpStatus.CREATED).send({
-    status: httpStatus.CREATED,
+  // res.status(httpStatus.CREATED).send({
+  //   status: httpStatus.CREATED,
+  //   message: 'Create EmployeeProject Success',
+  //   data: employeeProjects,
+  // });
+  res.render('success.view.ejs', {
     message: 'Create EmployeeProject Success',
-    data: employeeProjects,
+    redirectUrl: '/v1/employeeProjects',
   });
 });
 
@@ -23,10 +27,13 @@ const getEmployeeProjects = catchAsync(async (req, res) => {
   };
   const result = await employeeProjectService.queryEmployeeProjects(filter, options);
 
-  res.status(httpStatus.OK).send({
-    status: httpStatus.OK,
-    message: 'Get EmployeeProjects Success',
-    data: result,
+  // res.status(httpStatus.OK).send({
+  //   status: httpStatus.OK,
+  //   message: 'Get EmployeeProjects Success',
+  //   data: result,
+  // });
+  res.render('employeeProjects/getEmployeeProjects.view.ejs', {
+    employeeProjects: result,
   });
 });
 
@@ -36,30 +43,49 @@ const getEmployeeProject = catchAsync(async (req, res) => {
     throw new ApiError(httpStatus.NOT_FOUND, 'EmployeeProject not found');
   }
 
-  res.status(httpStatus.OK).send({
-    status: httpStatus.OK,
-    message: 'Get EmployeeProject Success',
-    data: employeeProjects,
+  // res.status(httpStatus.OK).send({
+  //   status: httpStatus.OK,
+  //   message: 'Get EmployeeProject Success',
+  //   data: employeeProjects,
+  // });
+  res.render('employeeProjects/detailEmployeeProject.view.ejs', {
+    employeeProject: employeeProjects,
   });
 });
 
 const updateEmployeeProject = catchAsync(async (req, res) => {
-  const employeeProjects = await employeeProjectService.updateEmployeeProjectById(req.params.employeeProjectsId, req.body);
+  const employeeProjects = await employeeProjectService.updateEmployeeProjectById(req.params.employeeProjectId, req.body);
 
-  res.status(httpStatus.OK).send({
-    status: httpStatus.OK,
-    message: 'Update EmployeeProject Success',
-    data: employeeProjects,
+  // res.status(httpStatus.OK).send({
+  //   status: httpStatus.OK,
+  //   message: 'Update EmployeeProject Success',
+  //   data: employeeProjects,
+  // });
+  res.render('success.view.ejs', {
+    message: 'Update EmployeeProejct Success',
+    redirectUrl: '/v1/employeeProjects',
   });
 });
 
 const deleteEmployeeProject = catchAsync(async (req, res) => {
   await employeeProjectService.deleteEmployeeProjectById(req.params.employeeProjectsId);
 
-  res.status(httpStatus.OK).send({
-    status: httpStatus.OK,
+  // res.status(httpStatus.OK).send({
+  //   status: httpStatus.OK,
+  //   message: 'Delete EmployeeProject Success',
+  //   data: null,
+  // });
+  res.render('success.view.ejs', {
     message: 'Delete EmployeeProject Success',
-    data: null,
+    redirectUrl: '/v1/employeeProjects',
+  });
+});
+
+const editEmployeeProject = catchAsync(async (req, res) => {
+  const employeeProject = await employeeProjectService.getEmployeeProjectById(req.params.employeeProjectsId);
+
+  res.render('employeeProjects/editEmployeeProject.view.ejs', {
+    employeeProject,
   });
 });
 
@@ -69,4 +95,5 @@ module.exports = {
   getEmployeeProject,
   updateEmployeeProject,
   deleteEmployeeProject,
+  editEmployeeProject,
 };

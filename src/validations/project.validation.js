@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const {objectId } = require('./custom.validation');
+const { objectId } = require('./custom.validation');
 
 const createProject = {
   body: Joi.object().keys({
@@ -43,9 +43,9 @@ const deleteProjectById = {
 };
 
 module.exports = {
- createProject,
- getProjectById,
- getProjects,
- deleteProjectById,
- updateProjectById
+  createProject,
+  getProjectById,
+  getProjects,
+  deleteProjectById,
+  updateProjectById,
 };

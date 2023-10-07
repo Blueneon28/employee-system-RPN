@@ -21,10 +21,11 @@ const getProjects = async (filter, options) => {
  */
 
 const getProjectById = async (id) => {
-  const project = await prisma.projects.findUnique({ where: {
-    id,
-  },});
-  return project;
+  return prisma.projects.findUnique({
+    where: {
+      id,
+    },
+  });
 };
 
 const createProject = async (projectBody) => {

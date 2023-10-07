@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dashboard</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      .container {
+        margin: 50px auto;
+        width: 300px;
+      }
+      h1 {
+        font-size: 24px;
+      }
+      a {
+        text-decoration: none;
+      }
+      .menu-buttons {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .menu-buttons button {
+        background-color: #66b3e0;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 0 10px;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s;
+      }
+
+      .menu-buttons button:hover {
+        background-color: #3385b3; /* Slightly darker pastel blue */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p>Menu:</p>
+      <div class="menu-buttons">
+        <button><a href="/v1/users" class="menu-button">Employee Management</a></button>
+        <button><a href="/v1/projects" class="menu-button">Project Management</a></button>
+        <button><a href="/v1/employeeProjects" class="menu-button">EmployeeProject Management</a></button>
+      </div>
+    </div>
+  </body>
+</html>
