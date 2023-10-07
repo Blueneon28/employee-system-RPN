@@ -1,5 +1,5 @@
 
-# EmployeeProject
+# Employee System
 
 Sistem manajemen karyawan yang mencakup informasi tentang karyawan yang bekerja pada proyek-proyek tertentu. Ini dapat digunakan untuk mengelola proyek, alokasi sumber daya, dan penggajian karyawan.
 
@@ -48,6 +48,14 @@ List of available routes:
 `GET /v1/projects/:projectId` - get projects by id\
 `PATCH /v1/projects/:projectId` - update projects\
 `DELETE /v1/projects/:projectId` - delete projects
+
+**Projects route**:\
+`POST /v1/employeeProject` - create a employeeProject\
+`GET /v1/employeeProject` - get all employeeProject\
+`GET /v1/employeeProject/:employeeProjectId` - get employeeProject by id\
+`PATCH /v1/employeeProject/:employeeProjectId` - update employeeProject\
+`DELETE /v1/employeeProject/:employeeProjectId` - delete employeeProjects
+
 # API Reference
 
 ## Authentication
