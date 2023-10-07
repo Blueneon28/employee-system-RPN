@@ -2,6 +2,7 @@ const express = require('express');
 const authRoute = require('./auth.route');
 const userRoute = require('./user.route');
 const projectRoute = require('./project.route');
+const employeeProjectRoute = require('./employeeProject.route');
 const docsRoute = require('./docs.route');
 const config = require('../../config/config');
 
@@ -19,6 +20,10 @@ const defaultRoutes = [
   {
     path: '/projects',
     route: projectRoute,
+  },
+  {
+    path: '/employeeProjects',
+    route: employeeProjectRoute,
   },
 ];
 

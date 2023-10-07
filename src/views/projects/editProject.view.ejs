@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Edit Project</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        background-color: #66b3e0;
+        color: white;
+        padding: 10px 0;
+      }
+
+      .container {
+        width: 50%;
+        margin: 20px auto;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 5px;
+        text-align: left;
+      }
+
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      input[type='text'] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      button {
+        background-color: #66b3e0;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s;
+        margin-top: 10px;
+      }
+
+      button:hover {
+        background-color: #3385b3;
+      }
+
+      a {
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Edit Project</h1>
+      <form action="/v1/projects/<%= project.id %>?_method=PATCH" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" value="<%= project.name %>" required /><br /><br />
+
+        <label for="status">Status:</label>
+        <input type="text" name="status" id="status" value="<%= project.status %>" required /><br /><br />
+
+        <button type="submit">Save Changes</button>
+      </form>
+      <button><a href="/v1/projects">Back to Project List</a></button>
+    </div>
+  </body>
+</html>

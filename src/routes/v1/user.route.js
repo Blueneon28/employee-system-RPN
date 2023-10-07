@@ -11,11 +11,17 @@ router
   .post(auth('manageUsers'), validate(userValidation.createUser), userController.createUser)
   .get(auth('getUsers'), validate(userValidation.getUsers), userController.getUsers);
 
+router.route('/create').get(auth('manageUsers'), (req, res) => {
+  res.render('users/createUser.view.ejs');
+});
+
 router
   .route('/:userId')
   .get(auth('getUsers'), validate(userValidation.getUser), userController.getUser)
   .patch(auth('manageUsers'), validate(userValidation.updateUser), userController.updateUser)
   .delete(auth('manageUsers'), validate(userValidation.deleteUser), userController.deleteUser);
+
+router.route('/edit/:userId').get(auth('manageUsers'), userController.editUser);
 
 module.exports = router;
 

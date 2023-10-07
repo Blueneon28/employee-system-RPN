@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Management</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        background-color: #66b3e0;
+        color: white;
+        padding: 10px 0;
+      }
+
+      table {
+        width: 80%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #66b3e0;
+        color: white;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      tr:hover {
+        background-color: #e2e2e2;
+      }
+
+      button {
+        background-color: #66b3e0;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #3385b3;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      .add-user-button {
+        background-color: #66b3e0;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+      }
+
+      .add-user-button:hover {
+        background-color: #3385b3;
+      }
+
+      .back-to-menu-button {
+        background-color: #66b3e0;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .back-to-menu-button:hover {
+        background-color: #3385b3;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>User Management</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Job Title</th>
+          <th>Created At</th>
+          <th>Updated At</th>
+          <th>Email Verified</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% let counter = 1; %> <% users.forEach((user) => { %>
+        <tr>
+          <td><%= counter++ %></td>
+          <td><%= user.id %></td>
+          <td><a href="/v1/users/<%= user.id %>"><%= user.name %></a></td>
+          <td><%= user.email %></td>
+          <td><%= user.role %></td>
+          <td><%= user.jobTitle %></td>
+          <td><%= user.createdAt %></td>
+          <td><%= user.updateAt %></td>
+          <td><%= user.isEmailVerified %></td>
+          <td>
+            <button><a href="/v1/users/edit/<%= user.id %>">Edit</a></button>
+            <form action="/v1/users/<%= user.id %>?_method=DELETE" method="post">
+              <button type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <button class="add-user-button"><a href="/v1/users/create">Add User</a></button>
+    <button class="back-to-menu-button"><a href="/">Back to Menu</a></button>
+  </body>
+</html>

@@ -19,6 +19,10 @@ router
     employeeProjectController.getEmployeeProjects
   );
 
+router.route('/create').get(auth('manageEmployeeProjects'), (req, res) => {
+  res.render('employeeProjects/createEmployeeProject.view.ejs');
+});
+
 router
   .route('/:employeeProjectId')
   .get(
@@ -36,5 +40,7 @@ router
     validate(employeeProjectValidation.deleteEmployeeProject),
     employeeProjectController.deleteEmployeeProject
   );
+
+router.route('/edit/:employeeProjectId').get(auth('manageEmployeeProjects'), employeeProjectController.editEmployeeProject);
 
 module.exports = router;

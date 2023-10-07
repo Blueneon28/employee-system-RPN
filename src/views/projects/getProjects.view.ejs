@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project List</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        background-color: #66b3e0;
+        color: white;
+        padding: 10px 0;
+      }
+
+      table {
+        width: 80%;
+        margin: 20px auto;
+        border-collapse: collapse;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid #ccc;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        text-align: center;
+      }
+
+      button {
+        background-color: #66b3e0;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 10px;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #3385b3;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      .add-project-button,
+      .back-to-menu-button {
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Project List</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Status</th>
+          <th>Created At</th>
+          <th>Updated At</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% let counter = 1; %> <% projects.forEach((project) => { %>
+        <tr>
+          <td><%= counter++ %></td>
+          <td><%= project.id %></td>
+          <td><a href="/v1/projects/<%= project.id %>"><%= project.name %></a></td>
+          <td><%= project.status %></td>
+          <td><%= project.createdAt %></td>
+          <td><%= project.updateAt %></td>
+          <td>
+            <button><a href="/v1/projects/edit/<%= project.id %>">Edit</a></button>
+            <form action="/v1/projects/<%= project.id %>?_method=DELETE" method="post">
+              <button type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <button class="add-project-button"><a href="/v1/projects/create">Create New Project</a></button>
+    <button class="back-to-menu-button"><a href="/">Back to Menu</a></button>
+  </body>
+</html>
