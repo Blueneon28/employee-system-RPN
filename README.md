@@ -49,7 +49,7 @@ List of available routes:
 `PATCH /v1/projects/:projectId` - update projects\
 `DELETE /v1/projects/:projectId` - delete projects
 
-**Projects route**:\
+**employeeProjects route**:\
 `POST /v1/employeeProject` - create a employeeProject\
 `GET /v1/employeeProject` - get all employeeProject\
 `GET /v1/employeeProject/:employeeProjectId` - get employeeProject by id\
